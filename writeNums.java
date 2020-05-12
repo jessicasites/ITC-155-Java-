@@ -12,7 +12,7 @@ public class writeNums {
 		writeNums(5);
 		System.out.println();
 		writeNums(12);
-        System.out.println();
+                System.out.println();
     }
 	public static void writeNums(int n) {
 	    if (n<1) {
