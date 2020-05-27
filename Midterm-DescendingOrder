@@ -1,0 +1,76 @@
+//********************************************************************************************
+//Midterm Problems
+//Jessica Sites
+//5/22/20
+//********************************************************************************************
+//Problem 3: Write a void method selectionSortDescendTrace() that takes an integer array, 
+//and sorts the array into descending order. The method should use nested loops and output 
+//the array after each iteration of the outer loop, thus outputting the array N-1 times
+//(where N is the size). Complete main() to read in a list of up to 10 positive integers 
+//(ending in -1) and then call the selectionSortDescendTrace() method.
+//********************************************************************************************
+import java.util.Scanner;
+
+public class DescendingOrder {
+
+	public static void main(String[] args) {
+		int i = 0;
+		int numElements = 0;
+		int[] numbers = new int[10];
+
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Enter number, (max=10), separated by a space. -1 to exit :");
+		int input = scanner.nextInt();
+
+		// TODO: Read in a list of up to 10 positive integers; stop when
+		// -1 is read. Then call selectionSortDescendTrace() method.
+		while (input != -1) {
+			numbers[i] = input;
+			i++;
+			numElements = i;
+			input = scanner.nextInt();
+		}
+
+		selectionSortDescendTrace(numbers, numElements);
+
+	}
+
+	public static void swap(int[] a, int i, int j) {
+		if (i != j) {
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
+	}
+
+	// TODO: Write a void method selectionSortDescendTrace() that takes
+	// an integer array and the number of elements in the array as arguments,
+	// and sorts the array into descending order.
+	public static void selectionSortDescendTrace(int[] numbers, int numElements) {
+
+		if (numElements == 1) {
+			System.out.println(numbers[0]);
+
+		} else {
+			for (int i = 0; i < numElements - 1; i++) {
+
+				int max = i;
+				for (int j = i + 1; j < numbers.length; j++) {
+					if (numbers[j] > numbers[max]) {
+						max = j;
+					}
+				}
+
+				swap(numbers, i, max);
+
+				for (int k = 0; k < numElements; k++) {
+					System.out.print(numbers[k] + " ");
+				}
+				System.out.println();
+
+			}
+		}
+	}
+
+}
